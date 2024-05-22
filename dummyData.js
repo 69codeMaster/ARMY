@@ -42,7 +42,8 @@ const orders = [
         quantity: "3",
       },
     ],
-
+  },
+  {
     order_number: "2",
     status: ORDER_STATUS.Issued,
     items: [
@@ -63,12 +64,25 @@ export const fetchMaterial = (materialId) => {
   return materials.find((material) => material.id === materialId);
 };
 
+export const materialExists = (materialId) => {
+  return materials.some((material) => material.id == materialId);
+};
+
 export const setMaterialAmountInStock = (materialId, amount) => {
   let material = materials.find((material) => material.id === materialId);
   material.amountInStock = amount;
 };
 
-export const createOrder = (order) => {
-  order = { order_number: orders.length + 1, ...order };
+export const createOrder = (orderItems) => {
+  const order = {
+    order_number: orders.length + 1,
+    status: ORDER_STATUS.Created,
+    orderItems,
+  };
   orders.push(order);
 };
+
+export const getNewOrderNumber = () => orders.length + 1;
+
+export const getMaterialPrice = (materialId) =>
+  materials.find((material) => material.id === materialId)?.price;
