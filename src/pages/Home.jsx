@@ -1,7 +1,5 @@
 import Card from "../components/UI/Card";
-import Button from "../components/UI/Button";
-import Link from "../components/UI/Link";
-import { PATHS } from "../constants";
+import Tiles from "../components/Tiles";
 
 function Home() {
   return (
@@ -10,11 +8,11 @@ function Home() {
         {" ברוכה הבאה "}
         <span className="text-blue-600 text-center">{" לדרישות והקצאות "}</span>
       </h1>
-      <div className="form-control">
-        <Link text={"ניהול  מלאי"} to={PATHS.StockManagement} />
-        <Link text={"יצירת הזמנה"} to={PATHS.CreateOrder} />
-        <Link text={"דוח הזמנות"} to={PATHS.OrderReport} />
-      </div>
+
+      <h1 className="text-gray-300 text-2xl text-right font-semibold p-4">
+        {" ?מה תרצו לעשות היום "}
+      </h1>
+      <Tiles />
     </Card>
   );
 }

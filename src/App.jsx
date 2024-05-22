@@ -7,6 +7,7 @@ import StockManagement from "./pages/StockManagement.jsx";
 import UnitOverview from "./pages/UnitOverview.jsx";
 import MaterialOverview from "./pages/MaterialOverview.jsx";
 import OrderOverview from "./pages/OrderOverview.jsx";
+import Popup from "./components/Popup.jsx";
 
 function App() {
   return (
