@@ -8,6 +8,7 @@ const MaterialData = ({ material, setUpdatedValue }) => {
       <div className="flex flex-col gap-5 w-full">
         <Output label={"מספר פריט"} value={material?.id} />
         <Output label={"תיאור פריט"} value={material?.description} />
+        <Output label={"מחיר פריט"} value={material?.price} />
         <Editable
           label={"כמות במלאי"}
           initalValue={material?.amountInStock}
