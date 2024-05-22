@@ -2,12 +2,12 @@ import React from "react";
 
 const OrderHeader = () => {
   return (
-    <thead>
+    <thead className="text-gray-100">
       <tr>
-        <th>שורה</th>
-        <th>מספר חומר</th>
-        <th>כמות</th>
         <th>מחיר כולל</th>
+        <th>כמות</th>
+        <th>מספר חומר</th>
+        <th>שורה</th>
       </tr>
     </thead>
   );

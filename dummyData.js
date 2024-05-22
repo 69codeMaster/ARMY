@@ -1,5 +1,5 @@
 import { ORDER_STATUS } from "./src/constants";
-const materials = [
+export const materials = [
   {
     id: "1",
     description: "עט",
@@ -26,19 +26,19 @@ const materials = [
   },
 ];
 
-const orders = [
+export const orders = [
   {
     order_number: "1",
     status: ORDER_STATUS.Created,
     items: [
       {
         item_number: "1",
-        materials: "3",
+        material: "3",
         quantity: "10",
       },
       {
         item_number: "2",
-        materials: "2",
+        material: "2",
         quantity: "3",
       },
     ],
@@ -49,40 +49,14 @@ const orders = [
     items: [
       {
         item_number: "1",
-        materials: "3",
+        material: "3",
         quantity: "13",
       },
       {
         item_number: "2",
-        materials: "3",
+        material: "3",
         quantity: "4",
       },
     ],
   },
 ];
-export const fetchMaterial = (materialId) => {
-  return materials.find((material) => material.id === materialId);
-};
-
-export const materialExists = (materialId) => {
-  return materials.some((material) => material.id == materialId);
-};
-
-export const setMaterialAmountInStock = (materialId, amount) => {
-  let material = materials.find((material) => material.id === materialId);
-  material.amountInStock = amount;
-};
-
-export const createOrder = (orderItems) => {
-  const order = {
-    order_number: orders.length + 1,
-    status: ORDER_STATUS.Created,
-    orderItems,
-  };
-  orders.push(order);
-};
-
-export const getNewOrderNumber = () => orders.length + 1;
-
-export const getMaterialPrice = (materialId) =>
-  materials.find((material) => material.id === materialId)?.price;

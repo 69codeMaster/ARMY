@@ -5,9 +5,7 @@ import OrderReport from "./pages/OrderReport.jsx";
 import CreateOrder from "./pages/CreateOrder.jsx";
 import StockManagement from "./pages/StockManagement.jsx";
 import UnitOverview from "./pages/UnitOverview.jsx";
-import MaterialOverview from "./pages/MaterialOverview.jsx";
 import OrderOverview from "./pages/OrderOverview.jsx";
-import Popup from "./components/Popup.jsx";
 
 function App() {
   return (
@@ -18,7 +16,6 @@ function App() {
         <Route path={PATHS.OrderReport} element={<OrderReport />} />
         <Route path={PATHS.StockManagement} element={<StockManagement />} />
         <Route path={PATHS.UnitOverview} element={<UnitOverview />} />
-        <Route path={PATHS.MaterialOverview} element={<MaterialOverview />} />
         <Route path={PATHS.OrderOverview} element={<OrderOverview />} />
       </Routes>
     </div>

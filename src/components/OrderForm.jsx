@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-import { fetchMaterial } from "../api/material";
+import { fetchOrderData } from "../api/orders";
 
-const MaterialForm = ({ setMaterial }) => {
-  const [materialId, setMaterialId] = useState("");
+const MaterialForm = ({ setOrderData }) => {
+  const [orderNumber, setOrderNumber] = useState();
 
   function handleSubmit(event) {
     event.preventDefault();
-    setMaterial(fetchMaterial(materialId.replace(/^0+/, "")));
+    setOrderData(fetchOrderData(orderNumber));
   }
 
   return (
     <form onSubmit={(e) => handleSubmit(e)} className="self-center">
       <input
         type="text"
-        placeholder="הזן מספר חומר"
-        value={materialId}
-        onChange={({ target }) => setMaterialId(target.value)}
+        placeholder="הזן מספר הזמנה"
+        value={orderNumber}
+        onChange={({ target }) => setOrderNumber(target.value)}
         className="input input-bordered input-info text-right w-full max-w-xs"
       />
     </form>

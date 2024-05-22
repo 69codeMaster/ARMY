@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState } from "react";
+import Card from "../components/UI/Card";
+import OrderData from "../components/OrderData";
+import OrderForm from "../components/OrderForm";
 
-const OrderOverview = () => {
+function OrderOverview() {
+  const [orderData, setOrderData] = useState([]);
   return (
-    <div>OrderOverview</div>
-  )
+    <Card>
+      <h1 className="text-gray-300 text-4xl text-center font-semibold p-4">
+        {"צפייה בהזמנה מספר"}
+        <span className="text-blue-600 text-center">
+          {" "}
+          {orderData?.order_number}
+        </span>
+      </h1>
+
+      <div className="flex flex-col w-full items-end gap-2 p-2">
+        <OrderForm setOrderData={setOrderData} />
+        <OrderData orderData={orderData} isCreate={false} />
+      </div>
+    </Card>
+  );
 }
 
-export default OrderOverview
+export default OrderOverview;

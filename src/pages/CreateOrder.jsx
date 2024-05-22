@@ -1,45 +1,48 @@
 import { useState } from "react";
 import Card from "../components/UI/Card";
-import { getNewOrderNumber } from "../../dummyData";
-import OrderItemsContainer from "../components/OrderItemsContainer";
-import OrderHeader from "../components/OrderHeader";
 import Button from "../components/UI/Button";
-import { materialExists, createOrder } from "../../dummyData";
+import OrderItemsContainer from "../components/OrderItems";
+import OrderHeader from "../components/OrderHeader";
+import { getNewOrderNumber } from "../api/orders";
+import { createOrder } from "../api/orders";
+import {
+  orderContainsNoLines,
+  getItemsWithWrongMaterial,
+  getItemsWithNotEnoughStock,
+} from "../utils/validateOrder";
 
 const CreateOrder = () => {
-  const [orderItems, setOrderItems] = useState([
-    {
-      item: 1,
-      material: "",
-      quantity: "",
-      price: 0,
-    },
-  ]);
+  const [orderItems, setOrderItems] = useState([]);
 
   const handleSave = () => {
-    const itemWithWrongMaterial = orderItems.filter(
-      (item) => !materialExists(item.material)
-    );
+    if (orderContainsNoLines(orderItems)) {
+      alert(`לא ניתן להקים הזמנה ללא שורות`);
+      return;
+    }
 
-    if (itemWithWrongMaterial.length) {
-      const badItemNumbers = itemWithWrongMaterial
-        .map((item) => item.item)
+    const itemsWithWrongMaterials = getItemsWithWrongMaterial(orderItems);
+    if (itemsWithWrongMaterials.length) {
+      const badItemNumbers = itemsWithWrongMaterials
+        .map((item) => item.item_number)
         .join(",");
 
       alert(`שורות ${badItemNumbers} מכילות חומרים לא קיימים`);
-    } else {
-      createOrder(orderItems);
-      setOrderItems([
-        {
-          item: 1,
-          material: "",
-          quantity: "",
-          price: 0,
-        },
-      ]);
-
-      alert(`ההזמנה נוצרה בהצלחה`);
+      return;
     }
+
+    const itemsWithNotEnoughStock = getItemsWithNotEnoughStock(orderItems);
+    if (itemsWithNotEnoughStock.length) {
+      const badItemNumbers = itemsWithNotEnoughStock
+        .map((item) => item.item_number)
+        .join(",");
+
+      alert(`אין כמות מספיקה במלאי עבור שורות ${badItemNumbers}`);
+      return;
+    }
+
+    createOrder(orderItems);
+    setOrderItems([]);
+    alert(`ההזמנה נוצרה בהצלחה`);
   };
 
   return (
@@ -58,6 +61,7 @@ const CreateOrder = () => {
           <OrderItemsContainer
             orderItems={orderItems}
             setOrderItems={setOrderItems}
+            isCreate={true}
           />
         </table>
         <div
@@ -66,7 +70,7 @@ const CreateOrder = () => {
             setOrderItems((prev) => [
               ...prev,
               {
-                item: orderItems.length + 1,
+                item_number: orderItems.length + 1,
                 material: "",
                 quantity: "",
                 price: 0,
