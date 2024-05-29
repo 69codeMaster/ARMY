@@ -4,8 +4,6 @@ import MaterialData from "../components/MaterialData";
 import MaterialForm from "../components/MaterialForm";
 import Button from "../components/UI/Button";
 import { setMaterialAmountInStock } from "../api/material";
-import { updateLocalStorage } from "../utils/localStorage";
-import { LOCAL_STORAGE } from "../constants";
 
 function MaterialOverview() {
   const [material, setMaterial] = useState({

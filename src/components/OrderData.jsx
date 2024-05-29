@@ -1,6 +1,9 @@
+import { useEffect } from "react";
+import { fetchOrderData } from "../api/orders";
 import OrderHeader from "../components/OrderHeader";
-import { ORDER_STATUS } from "../constants";
 import OrderItemsContainer from "./OrderItems";
+import OrderStatusButtons from "./OrderStatusButtons";
+import { updateOrderStatus } from "../api/orders";
 
 const OrderData = ({ orderData, isCreate, setOrderStatus }) => {
   if (orderData !== undefined)
@@ -14,26 +17,16 @@ const OrderData = ({ orderData, isCreate, setOrderStatus }) => {
             isCreate={isCreate}
           />
         </table>
-        <div className="py-6 overflow-hidden flex justify-between">
-          <div
-            className={
-              orderData.status === ORDER_STATUS.Issued
-                ? "btn btn-disabled"
-                : "btn btn-secondary"
-            }
-            onClick={() => setOrderStatus(ORDER_STATUS.Canceled)}>
-            {"מחק הזמנה"}
-          </div>
-          <div
-            className={
-              orderData.status === ORDER_STATUS.Canceled
-                ? "btn btn-disabled"
-                : "btn btn-primary"
-            }
-            onClick={() => setOrderStatus(ORDER_STATUS.Issued)}>
-            {"נפק ליחידה"}
-          </div>
-        </div>
+        {orderData.items.length ===
+          fetchOrderData(orderData.order_number).items.length && (
+          <OrderStatusButtons
+            orderData={orderData}
+            setOrderStatus={(newStatus) => {
+              updateOrderStatus({ ...orderData, status: newStatus });
+              setOrderStatus(newStatus);
+            }}
+          />
+        )}
       </div>
     );
 };

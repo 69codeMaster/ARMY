@@ -2,14 +2,9 @@ import React, { useEffect, useState } from "react";
 import Card from "../components/UI/Card";
 import OrderData from "../components/OrderData";
 import OrderForm from "../components/OrderForm";
-import { updateOrderStatus } from "../api/orders";
 
 function OrderOverview() {
   const [orderData, setOrderData] = useState();
-
-  useEffect(() => {
-    updateOrderStatus(orderData);
-  }, [orderData?.status]);
 
   return (
     <Card>
@@ -26,7 +21,7 @@ function OrderOverview() {
         <OrderData
           orderData={orderData}
           isCreate={false}
-          setOrdersStatus={(newStatus) =>
+          setOrderStatus={(newStatus) =>
             setOrderData({ ...orderData, status: newStatus })
           }
         />

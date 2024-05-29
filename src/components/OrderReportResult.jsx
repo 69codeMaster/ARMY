@@ -2,7 +2,6 @@ import React from "react";
 import OrderData from "./OrderData";
 
 const OrderReportResult = ({ orders, setOrdersStatus }) => {
-  console.log(orders);
   return (
     <div className="h-80 overflow-auto">
       {orders.map((orderData) => {
