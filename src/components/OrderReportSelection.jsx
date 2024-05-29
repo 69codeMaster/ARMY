@@ -15,10 +15,7 @@ const OrderReportSelection = ({ setOrders }) => {
     });
   };
 
-  const handleSearch = () => {
-    console.log(fetchOrdersByParams(searchParams));
-    setOrders(fetchOrdersByParams(searchParams));
-  };
+  const handleSearch = () => setOrders(fetchOrdersByParams(searchParams));
 
   return (
     <div className="flex flex-row-reverse items-center justify-evenly mb-5">

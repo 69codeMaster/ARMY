@@ -55,7 +55,7 @@ const CreateOrder = () => {
         </span>
       </h1>
 
-      <div className="overflow-x-auto text-black">
+      <div className="overflow-x-auto text-black max-h-[70%]">
         <table className="table">
           <OrderHeader />
           <OrderItemsContainer
@@ -64,6 +64,7 @@ const CreateOrder = () => {
             isCreate={true}
           />
         </table>
+
         <div
           className="text-2xl text-right cursor-pointer"
           onClick={() =>

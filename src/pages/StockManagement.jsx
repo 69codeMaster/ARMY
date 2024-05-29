@@ -4,15 +4,31 @@ import MaterialData from "../components/MaterialData";
 import MaterialForm from "../components/MaterialForm";
 import Button from "../components/UI/Button";
 import { setMaterialAmountInStock } from "../api/material";
+import { updateLocalStorage } from "../utils/localStorage";
+import { LOCAL_STORAGE } from "../constants";
 
 function MaterialOverview() {
-  const [material, setMaterial] = useState("");
+  const [material, setMaterial] = useState({
+    id: "",
+    description: "",
+    amountInStock: 0,
+    price: "",
+  });
   const [updatedAmount, setUpdatedAmount] = useState();
 
   const handleSave = (event) => {
     event.preventDefault();
-    console.log(material.id, updatedAmount);
+    if (updatedAmount < 0) {
+      alert("כמות במלאי לא יכולה להיות שלילית");
+      return;
+    }
+    if (material.id === "") {
+      alert("יש להזין חומר");
+      return;
+    }
+
     setMaterialAmountInStock(material.id, updatedAmount);
+    alert("נתוני חומר עודכנו");
   };
 
   return (

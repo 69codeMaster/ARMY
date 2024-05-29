@@ -14,7 +14,7 @@ export const getItemsWithWrongMaterial = (orderItems) => {
 
 export const getItemsWithNotEnoughStock = (orderItems) => {
   const itemsWithNotEnoughStock = orderItems.filter(
-    (item) => getMaterialStock(item.material) < item.quantity
+    (item) => Number(getMaterialStock(item.material)) < item.quantity
   );
 
   return itemsWithNotEnoughStock;

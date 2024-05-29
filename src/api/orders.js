@@ -1,6 +1,8 @@
 import { orders } from "../../dummyData";
 import { ORDER_STATUS } from "../constants";
 import { fetchMaterial } from "./material";
+import { LOCAL_STORAGE } from "../constants";
+import { updateLocalStorage } from "../utils/localStorage";
 
 export const createOrder = (orderItems) => {
   const order = {
@@ -13,6 +15,7 @@ export const createOrder = (orderItems) => {
     (item) => (fetchMaterial(item.material).amountInStock -= item.quantity)
   );
   orders.push(order);
+  updateLocalStorage(LOCAL_STORAGE.Orders, JSON.stringify(orders));
 };
 
 export const getNewOrderNumber = () => orders.length + 1;

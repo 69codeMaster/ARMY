@@ -19,7 +19,7 @@ const Entry = ({
         type={type || "text"}
         value={value}
         placeholder={placeholder}
-        className="w-full input input-border h-10 text-right text-gray-300"
+        className="w-full input input-border h-10 text-right text-black"
       />
     </div>
   );

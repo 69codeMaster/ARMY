@@ -14,6 +14,11 @@ export const PATHS = {
   StockManagement: "stock/manage",
 };
 
+export const LOCAL_STORAGE = {
+  Materials: "materials",
+  Orders: "orders",
+};
+
 // export const PATHS = {
 //   Home: "/",
 //   MaterialOverview: "/material/:id",

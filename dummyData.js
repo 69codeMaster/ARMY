@@ -1,5 +1,8 @@
 import { ORDER_STATUS } from "./src/constants";
-export const materials = [
+import { LOCAL_STORAGE } from "./src/constants";
+import { readFromLocalStorage } from "./src/utils/localStorage";
+
+export const materials = readFromLocalStorage(LOCAL_STORAGE.Materials, [
   {
     id: "1",
     description: "עט",
@@ -24,9 +27,9 @@ export const materials = [
     amountInStock: 40,
     price: "5",
   },
-];
+]);
 
-export const orders = [
+export const orders = readFromLocalStorage(LOCAL_STORAGE.Orders, [
   {
     order_number: "1",
     status: ORDER_STATUS.Created,
@@ -59,4 +62,5 @@ export const orders = [
       },
     ],
   },
-];
+]);
+  

@@ -9,7 +9,7 @@ const Editable = ({ label, initalValue, setUpdatedValue }) => {
   }, [initalValue]);
 
   return (
-    <div className="rounded-md bg-slate-700 w-full p-2 text-right text-2xl text-white">
+    <div className="rounded-md bg-slate-700 w-full p-2 text-white text-right text-2xl ">
       <input
         type="number"
         value={value}
@@ -17,7 +17,7 @@ const Editable = ({ label, initalValue, setUpdatedValue }) => {
           setValue(target.value);
           setUpdatedValue(target.value);
         }}
-        className="input input-bordered input-info w-fit p-6 text-right remove-apperance"
+        className="input font-medium text-black input-bordered input-info w-fit p-6 text-right remove-apperance"
       />
       <strong> : {label} </strong>
     </div>
