@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { PATHS } from "./constants.js";
 import Home from "./pages/Home.jsx";
 import OrderReport from "./pages/OrderReport.jsx";

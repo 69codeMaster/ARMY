@@ -1,7 +1,8 @@
 import React from "react";
 import OrderData from "./OrderData";
 
-const OrderReportResult = ({ orders }) => {
+const OrderReportResult = ({ orders, setOrdersStatus }) => {
+  console.log(orders);
   return (
     <div className="h-80 overflow-auto">
       {orders.map((orderData) => {
@@ -14,6 +15,9 @@ const OrderReportResult = ({ orders }) => {
               key={JSON.stringify(orderData)}
               isCreate={false}
               orderData={orderData}
+              setOrderStatus={(newStatus) =>
+                setOrdersStatus(orderData.order_number, newStatus)
+              }
             />
           </div>
         );

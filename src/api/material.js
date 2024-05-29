@@ -22,8 +22,11 @@ export const getMaterialPrice = (materialId) =>
 export const getMaterialStock = (materialId) =>
   materials.find((material) => material.id === materialId)?.amountInStock;
 
-export const validate = () => {
-  
-}
-
-
+export const reclaimStockFromCanceledOrder = (materialAmount) => {
+  materialAmount.forEach(({ material, amount }) =>
+    setMaterialAmountInStock(
+      material,
+      Number(amount) + Number(getMaterialStock(material))
+    )
+  );
+};

@@ -1,6 +1,6 @@
 import { orders } from "../../dummyData";
 import { ORDER_STATUS } from "../constants";
-import { fetchMaterial } from "./material";
+import { fetchMaterial, reclaimStockFromCanceledOrder } from "./material";
 import { LOCAL_STORAGE } from "../constants";
 import { updateLocalStorage } from "../utils/localStorage";
 
@@ -23,7 +23,27 @@ export const getNewOrderNumber = () => orders.length + 1;
 export const fetchOrderData = (orderNumber) => {
   return orders.find((order) => order.order_number === orderNumber);
 };
+export const updateOrderStatus = (updatedOrder) => {
+  let order = fetchOrderData(updatedOrder?.order_number);
+  if (updatedOrder !== undefined && order !== undefined) {
+    if (
+      order.status !== updatedOrder.status &&
+      updatedOrder.status === ORDER_STATUS.Canceled
+    ) {
+      reclaimStockFromCanceledOrder(
+        updatedOrder.items.map((item) => {
+          return {
+            material: item.material,
+            amount: item.quantity,
+          };
+        })
+      );
+    }
 
+    order.status = updatedOrder.status;
+    updateLocalStorage(LOCAL_STORAGE.Orders, JSON.stringify(orders));
+  }
+};
 export const fetchOrdersByParams = (searchParams) => {
   const filteredOrders = [];
   let filteredItems = [];

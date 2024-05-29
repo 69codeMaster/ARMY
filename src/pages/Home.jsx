@@ -9,9 +9,9 @@ function Home() {
         <span className="text-blue-600 text-center">{" לדרישות והקצאות "}</span>
       </h1>
 
-      <h1 className="text-gray-300 text-2xl text-right font-semibold p-4">
+      <h2 className="text-gray-300 text-2xl text-right font-semibold p-4">
         {" ?מה תרצו לעשות היום "}
-      </h1>
+      </h2>
       <Tiles />
     </Card>
   );

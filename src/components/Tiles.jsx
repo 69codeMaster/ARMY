@@ -3,6 +3,7 @@ import { TbReportMoney as ReportIcon } from "react-icons/tb";
 import { MdAddShoppingCart as OrderCreateIcon } from "react-icons/md";
 import { SlEyeglass as OrderOverviewIcon } from "react-icons/sl";
 import LinkTile from "./UI/LinkTile";
+import PopupTile from "./PopupTile";
 import { PATHS } from "../constants";
 
 const Tiles = () => {
@@ -23,6 +24,7 @@ const Tiles = () => {
         to={PATHS.OrderReport}
         icon={<ReportIcon />}
       />
+
       <LinkTile
         text={"צפייה בהזמנה"}
         to={PATHS.OrderOverview}

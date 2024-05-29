@@ -1,7 +1,7 @@
 export const ORDER_STATUS = {
-  Created: Symbol("created"),
-  Canceled: Symbol("canceled"),
-  Issued: Symbol("Issued"),
+  Created: "created",
+  Canceled: "canceled",
+  Issued: "Issued",
 };
 
 export const PATHS = {

@@ -1,7 +1,7 @@
 import { getMaterialPrice } from "../api/material";
 import Cell from "./UI/Table/Cell";
 
-const OrderItem = ({ orderItem, setOrderItems, isCreate, key }) => {
+const OrderItem = ({ orderItem, setOrderItems, isCreate }) => {
   const price = getMaterialPrice(orderItem.material) * orderItem.quantity;
   const handleChange = (field, value) => {
     setOrderItems((prev) => {
@@ -15,7 +15,7 @@ const OrderItem = ({ orderItem, setOrderItems, isCreate, key }) => {
   };
 
   return (
-    <tr key={key}>
+    <tr>
       <Cell value={isNaN(price) ? 0 : price} name={"price"} />
       <Cell
         editable={isCreate}

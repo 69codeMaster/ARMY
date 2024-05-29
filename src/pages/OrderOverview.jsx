@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../components/UI/Card";
 import OrderData from "../components/OrderData";
 import OrderForm from "../components/OrderForm";
+import { updateOrderStatus } from "../api/orders";
 
 function OrderOverview() {
-  const [orderData, setOrderData] = useState([]);
+  const [orderData, setOrderData] = useState();
+
+  useEffect(() => {
+    updateOrderStatus(orderData);
+  }, [orderData?.status]);
+
   return (
     <Card>
       <h1 className="text-gray-300 text-4xl text-center font-semibold p-4">
@@ -17,7 +23,13 @@ function OrderOverview() {
 
       <div className="flex flex-col w-full items-end gap-2 p-2">
         <OrderForm setOrderData={setOrderData} />
-        <OrderData orderData={orderData} isCreate={false} />
+        <OrderData
+          orderData={orderData}
+          isCreate={false}
+          setOrdersStatus={(newStatus) =>
+            setOrderData({ ...orderData, status: newStatus })
+          }
+        />
       </div>
     </Card>
   );
