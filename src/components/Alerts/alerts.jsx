@@ -62,3 +62,8 @@ export const materialNotFound = Swal.mixin({
   title: "מקט לא נמצא",
   text: "וודא שהזנת מקט נכון",
 });
+export const orderNotFound = Swal.mixin({
+  icon: "warning",
+  title: "הזמנה לא נמצאה",
+  text: "וודא שהזנת הזמנה נכונה",
+});

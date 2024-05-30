@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Card from "../components/UI/Card";
 import MaterialData from "../components/MaterialData";
-import MaterialForm from "../components/MaterialForm";
+import SearchMaterial from "../components/SearchMaterial";
 import Button from "../components/UI/Button";
 import { setMaterialAmountInStock } from "../api/material";
 import { NegativeStock, StockUpdated } from "../components/Alerts/alerts";
@@ -32,7 +32,7 @@ function MaterialOverview() {
         <span className="text-blue-600 text-center"> {"מלאי"}</span>
       </h1>
       <div className="flex flex-col w-full items-end gap-2 p-2">
-        <MaterialForm setMaterial={setMarerialData} />
+        <SearchMaterial setMaterial={setMarerialData} />
 
         {marerialData === undefined ||
           (marerialData?.id !== "" && (

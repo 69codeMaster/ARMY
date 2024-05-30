@@ -5,7 +5,7 @@ function Home() {
   return (
     <Card>
       <h1 className="text-gray-300 text-5xl text-center font-semibold p-4">
-        {" ברוכה הבאה "}
+        {"ברוכים הבאה "}
         <span className="text-blue-700 text-center">{" לדרישות והקצאות "}</span>
       </h1>
 

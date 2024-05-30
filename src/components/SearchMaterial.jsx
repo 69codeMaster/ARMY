@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { fetchMaterial } from "../api/material";
 import { materialNotFound } from "./Alerts/alerts";
 
-const MaterialForm = ({ setMaterial }) => {
+const SearchMaterial = ({ setMaterial }) => {
   const [materialId, setMaterialId] = useState("");
 
   function handleSubmit(event) {
@@ -25,4 +25,4 @@ const MaterialForm = ({ setMaterial }) => {
   );
 };
 
-export default MaterialForm;
+export default SearchMaterial;

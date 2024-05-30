@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { fetchOrderData } from "../api/orders";
+import { orderNotFound } from "../components/Alerts/alerts";
 
-
-const MaterialForm = ({ setOrderData }) => {
+const SearchOrder = ({ setOrderData }) => {
   const [orderNumber, setOrderNumber] = useState();
 
   function handleSubmit(event) {
     event.preventDefault();
-    setOrderData(fetchOrderData(orderNumber));
+    const orderData = fetchOrderData(orderNumber);
+    setOrderData(orderData);
+    if (orderData === undefined) orderNotFound.fire();
   }
 
   return (
@@ -23,4 +25,4 @@ const MaterialForm = ({ setOrderData }) => {
   );
 };
 
-export default MaterialForm;
+export default SearchOrder;

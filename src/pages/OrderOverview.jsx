@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Card from "../components/UI/Card";
 import OrderData from "../components/OrderData";
-import OrderForm from "../components/OrderForm";
+import SearchOrder from "../components/SearchOrder";
 
 function OrderOverview() {
   const [orderData, setOrderData] = useState();
@@ -17,7 +17,7 @@ function OrderOverview() {
       </h1>
 
       <div className="flex flex-col h-full items-end gap-2 p-2">
-        <OrderForm setOrderData={setOrderData} />
+        <SearchOrder setOrderData={setOrderData} />
         <OrderData
           orderData={orderData}
           isCreate={false}
