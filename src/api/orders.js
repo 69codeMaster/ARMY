@@ -44,28 +44,28 @@ export const updateOrderStatus = (updatedOrder) => {
     updateLocalStorage(LOCAL_STORAGE.Orders, JSON.stringify(orders));
   }
 };
-export const fetchOrdersByParams = (searchParams) => {
-  const filteredOrders = [];
+
+const IsSelected = (data, params) => {
+  return Object.entries(params).every(
+    ([searchKey, searchValue]) =>
+      searchValue === "" || data[searchKey] === searchValue
+  );
+};
+
+export const selectOrders = (searchParams) => {
   let filteredItems = [];
 
-  orders.forEach((order) => {
-    if (
-      searchParams.order_number === "" ||
-      order.order_number === searchParams.order_number
-    ) {
-      filteredItems = order.items.filter(
-        (item) =>
-          (searchParams.material === "") |
-          (item.material === searchParams.material)
+  return orders.reduce((selectedOrders, order) => {
+    if (IsSelected(order, searchParams.headerParams)) {
+      filteredItems = order.items.filter((item) =>
+        IsSelected(item, searchParams.itemParams)
       );
-
       if (filteredItems.length !== 0)
-        filteredOrders.push({
+        selectedOrders.push({
           ...order,
           items: filteredItems,
         });
     }
-  });
-
-  return filteredOrders;
+    return selectedOrders;
+  }, []);
 };

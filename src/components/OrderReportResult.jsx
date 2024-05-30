@@ -4,10 +4,10 @@ import OrderData from "./OrderData";
 const OrderReportResult = ({ orders, setOrdersStatus }) => {
   return (
     <div className="h-80 overflow-auto">
-      {orders.map((orderData) => {
+      {orders?.map((orderData) => {
         return (
-          <div>
-            <div className="text-right text-white text-2xl">
+          <div className="pb-5" key={orderData.order_number}>
+            <div className="px-2 text-right text-white text-2xl font-semibold">
               {orderData.order_number + " הזמנה"}
             </div>
             <OrderData

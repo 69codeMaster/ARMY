@@ -19,6 +19,12 @@ export const LOCAL_STORAGE = {
   Orders: "orders",
 };
 
+export const STATUS_TRANSLATIONS = {
+  [ORDER_STATUS.Canceled]: "בוטלה",
+  [ORDER_STATUS.Created]: "נוצרה",
+  [ORDER_STATUS.Issued]: "נופקה",
+};
+
 // export const PATHS = {
 //   Home: "/",
 //   MaterialOverview: "/material/:id",

@@ -3,12 +3,11 @@ import { TbReportMoney as ReportIcon } from "react-icons/tb";
 import { MdAddShoppingCart as OrderCreateIcon } from "react-icons/md";
 import { SlEyeglass as OrderOverviewIcon } from "react-icons/sl";
 import LinkTile from "./UI/LinkTile";
-import PopupTile from "./PopupTile";
 import { PATHS } from "../constants";
 
 const Tiles = () => {
   return (
-    <div className="p-4 grid grid-rows-2 grid-cols-2 gap-4">
+    <div className="h-full grid grid-rows-2 grid-cols-2 gap-4 p-4">
       <LinkTile
         text={"ניהול  מלאי"}
         to={PATHS.StockManagement}

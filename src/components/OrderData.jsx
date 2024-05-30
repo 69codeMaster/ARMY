@@ -1,17 +1,17 @@
-import { useEffect } from "react";
 import { fetchOrderData } from "../api/orders";
-import OrderHeader from "../components/OrderHeader";
+import OrderTableHeader from "./OrderTableHeader";
 import OrderItemsContainer from "./OrderItems";
 import OrderStatusButtons from "./OrderStatusButtons";
 import { updateOrderStatus } from "../api/orders";
+import OrderHeader from "./OrderHeader";
 
 const OrderData = ({ orderData, isCreate, setOrderStatus }) => {
   if (orderData !== undefined)
     return (
-      <div className="overflow-x-auto w-full text-black px-2">
-        <div className="">{orderData.status}</div>
+      <div className="overflow-x-auto max-h-[70%] w-full text-black px-2">
+        <OrderHeader orderHeaderData={orderData} />
         <table className="table">
-          <OrderHeader />
+          <OrderTableHeader />
           <OrderItemsContainer
             orderItems={orderData.items}
             isCreate={isCreate}

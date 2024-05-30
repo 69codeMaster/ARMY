@@ -9,7 +9,7 @@ const OrderItem = ({ orderItem, setOrderItems, isCreate }) => {
         (item) => item.item_number !== orderItem.item_number
       );
       return [...otherItems, { ...orderItem, [field]: value }].sort(
-        (item) => item.item_number
+        (item1, item2) => +item1.item_number - +item2.item_number
       );
     });
   };

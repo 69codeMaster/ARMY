@@ -1,6 +1,6 @@
 import OrderItem from "./OrderItem";
 
-const OrderItemsContainer = ({ orderItems, setOrderItems, isCreate }) => {
+const OrderItems = ({ orderItems, setOrderItems, isCreate }) => {
   return (
     <tbody>
       {orderItems?.map((item) => (
@@ -15,4 +15,4 @@ const OrderItemsContainer = ({ orderItems, setOrderItems, isCreate }) => {
   );
 };
 
-export default OrderItemsContainer;
+export default OrderItems;

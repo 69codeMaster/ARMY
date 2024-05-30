@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Card from "../components/UI/Card";
 import Button from "../components/UI/Button";
-import OrderItemsContainer from "../components/OrderItems";
-import OrderHeader from "../components/OrderHeader";
+import OrderItems from "../components/OrderItems";
 import { getNewOrderNumber } from "../api/orders";
+import OrderTableHeader from "../components/OrderTableHeader";
 import { createOrder } from "../api/orders";
 import {
   orderContainsNoLines,
@@ -57,8 +57,8 @@ const CreateOrder = () => {
 
       <div className="overflow-x-auto text-black max-h-[70%]">
         <table className="table">
-          <OrderHeader />
-          <OrderItemsContainer
+          <OrderTableHeader />
+          <OrderItems
             orderItems={orderItems}
             setOrderItems={setOrderItems}
             isCreate={true}
@@ -81,8 +81,8 @@ const CreateOrder = () => {
           +
         </div>
       </div>
-      <div className="flex justify-center items-center" onClick={handleSave}>
-        <Button> {"שמור"} </Button>
+      <div className="flex justify-center items-center ">
+        <Button onClick={handleSave}> {"שמור"} </Button>
       </div>
     </Card>
   );

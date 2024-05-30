@@ -1,7 +1,20 @@
-import React from "react";
 import { ORDER_STATUS } from "../constants";
+import TruckCheckIcon from "./UI/Icons/TruckCheckIcon";
+import TruckCancelIcon from "./UI/Icons/TruckCancelIcon";
+import { translateToHebrew } from "../utils/translateStatus";
+import { SameStatus } from "./Alerts/alerts";
 
 const OrderStatusButtons = ({ setOrderStatus, orderData }) => {
+  const handleClick = (status) => {
+    if (status === orderData.status) {
+      SameStatus(
+        orderData.order_number,
+        translateToHebrew(orderData.status)
+      ).fire();
+      return;
+    }
+    setOrderStatus(status);
+  };
   return (
     <div className="py-6 overflow-hidden flex justify-between">
       <div
@@ -10,8 +23,9 @@ const OrderStatusButtons = ({ setOrderStatus, orderData }) => {
             ? "btn btn-disabled"
             : "btn btn-secondary"
         }
-        onClick={() => setOrderStatus(ORDER_STATUS.Canceled)}>
-        {"מחק הזמנה"}
+        onClick={() => handleClick(ORDER_STATUS.Canceled)}>
+        <TruckCancelIcon />
+        {"בטל הזמנה"}
       </div>
       <div
         className={
@@ -19,7 +33,8 @@ const OrderStatusButtons = ({ setOrderStatus, orderData }) => {
             ? "btn btn-disabled"
             : "btn btn-primary"
         }
-        onClick={() => setOrderStatus(ORDER_STATUS.Issued)}>
+        onClick={() => handleClick(ORDER_STATUS.Issued)}>
+        <TruckCheckIcon />
         {"נפק ליחידה"}
       </div>
     </div>

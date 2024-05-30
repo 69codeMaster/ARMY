@@ -12,7 +12,9 @@ function Home() {
       <h2 className="text-gray-300 text-2xl text-right font-semibold p-4">
         {" ?מה תרצו לעשות היום "}
       </h2>
-      <Tiles />
+      <div className="w-full h-[65%]">
+        <Tiles />
+      </div>
     </Card>
   );
 }

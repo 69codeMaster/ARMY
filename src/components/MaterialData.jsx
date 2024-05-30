@@ -5,7 +5,7 @@ import Editable from "./UI/Editable";
 const MaterialData = ({ material, setUpdatedValue }) => {
   if (material?.id !== undefined)
     return (
-      <div className="flex flex-col gap-5 w-full">
+      <div className="flex flex-col gap-5 py-4 w-full">
         <Output label={"מספר פריט"} value={material?.id} />
         <Output label={"תיאור פריט"} value={material?.description} />
         <Output label={"מחיר פריט"} value={material?.price} />

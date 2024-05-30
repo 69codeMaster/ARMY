@@ -1,10 +1,11 @@
-const Button = ({ children }) => {
+const Button = ({ children, onClick }) => {
   return (
-    <div className="py-2">
-      <button type="submit" className=" w-full btn btn-info block text-xl">
-        {children}
-      </button>
-    </div>
+    <button
+      type="submit"
+      className=" w-full btn btn-info block text-xl max-w-fit"
+      onClick={onClick}>
+      {children}
+    </button>
   );
 };
 

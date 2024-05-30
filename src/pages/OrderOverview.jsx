@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Card from "../components/UI/Card";
 import OrderData from "../components/OrderData";
 import OrderForm from "../components/OrderForm";
@@ -16,7 +16,7 @@ function OrderOverview() {
         </span>
       </h1>
 
-      <div className="flex flex-col w-full items-end gap-2 p-2">
+      <div className="flex flex-col h-full items-end gap-2 p-2">
         <OrderForm setOrderData={setOrderData} />
         <OrderData
           orderData={orderData}

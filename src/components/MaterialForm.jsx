@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { fetchMaterial } from "../api/material";
 
 const MaterialForm = ({ setMaterial }) => {
-  const [materialId, setMaterialId] = useState("1");
+  const [materialId, setMaterialId] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();

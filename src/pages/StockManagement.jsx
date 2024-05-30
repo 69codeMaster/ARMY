@@ -38,8 +38,8 @@ function MaterialOverview() {
         <MaterialForm setMaterial={setMaterial} />
         <MaterialData material={material} setUpdatedValue={setUpdatedAmount} />
         {material && (
-          <div className="self-center" onClick={(e) => handleSave(e)}>
-            <Button> {"שמור"} </Button>
+          <div className="self-center ">
+            <Button onClick={(e) => handleSave(e)}> {"שמור"} </Button>
           </div>
         )}
       </div>
