@@ -3,7 +3,7 @@ import { fetchOrderData } from "../api/orders";
 import { orderNotFound } from "../components/Alerts/alerts";
 
 const SearchOrder = ({ setOrderData }) => {
-  const [orderNumber, setOrderNumber] = useState();
+  const [orderNumber, setOrderNumber] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();

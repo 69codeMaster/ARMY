@@ -9,7 +9,7 @@ const DropDown = ({ selectOptions, value, placeholder, name, onSelect }) => {
         className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
         {selectOptions.map((option) => {
           return (
-            <li>
+            <li key={option}>
               <a
                 onClick={({ target }) => {
                   onSelect(name, target.innerText);
