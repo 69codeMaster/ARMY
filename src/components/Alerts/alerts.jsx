@@ -12,17 +12,17 @@ export const OrderCreated = Swal.mixin({
   text: "הזמנה נוצרה בהצלחה",
 });
 
-export const MaterialUpdated = Swal.mixin({
+export const StockUpdated = Swal.mixin({
   icon: "success",
   title: "!התעדכנו",
   text: "עדכון נתוני המלאי בוצע בהצלחה",
 });
 
-export const BadMaterial = ({ lines }) =>
+export const BadMaterial = (lines) =>
   Swal.mixin({
     icon: "error",
-    title: "כמה חומרים לא קיימים",
-    text,
+    title: "וודא שהמקטים נכונים",
+    text: `שורות ${lines} מכילות חומרים לא קיימים`,
   });
 
 export const SameStatus = (order, status) =>
@@ -32,9 +32,33 @@ export const SameStatus = (order, status) =>
     text: `הזמנה ${order} כבר בסטטוס ${status}`,
   });
 
-export const NotEnoughInStock = ({ lines }) =>
+export const NotEnoughInStock = (lines) =>
   Swal.mixin({
     icon: "error",
-    title: "כמה חומרים לא קיימים",
-    text,
+    title: "...מצטערים לא נשאר",
+    text: `אין כמות מספיקה במלאי עבור שורות ${lines}`,
   });
+
+export const NegativeStock = Swal.mixin({
+  icon: "error",
+  title: "אתה לא יכול להיכנס למינוס",
+  text: `כמות במלאי אינה יכולה להיות קטנה מ0`,
+});
+
+export const cancelOrder = Swal.mixin({
+  icon: "success",
+  title: "הזמנה בוטלה בהצלחה",
+  text: "לחסוך קצת זה טוב",
+});
+
+export const issueOrder = Swal.mixin({
+  icon: "success",
+  title: "הזמנה נופקה בהצלחה",
+  text: "!עשיתי ניפוק",
+});
+
+export const materialNotFound = Swal.mixin({
+  icon: "warning",
+  title: "מקט לא נמצא",
+  text: "וודא שהזנת מקט נכון",
+});

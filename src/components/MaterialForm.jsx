@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { fetchMaterial } from "../api/material";
+import { materialNotFound } from "./Alerts/alerts";
 
 const MaterialForm = ({ setMaterial }) => {
   const [materialId, setMaterialId] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
-    setMaterial(fetchMaterial(materialId.replace(/^0+/, "")));
+    const materialData = fetchMaterial(materialId.replace(/^0+/, ""));
+    setMaterial(materialData);
+    if (materialData === undefined) materialNotFound.fire();
   }
 
   return (

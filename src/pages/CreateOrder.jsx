@@ -10,13 +10,19 @@ import {
   getItemsWithWrongMaterial,
   getItemsWithNotEnoughStock,
 } from "../utils/validateOrder";
+import {
+  NoRows,
+  BadMaterial,
+  NotEnoughInStock,
+  OrderCreated,
+} from "../components/Alerts/alerts";
 
 const CreateOrder = () => {
   const [orderItems, setOrderItems] = useState([]);
 
   const handleSave = () => {
     if (orderContainsNoLines(orderItems)) {
-      alert(`לא ניתן להקים הזמנה ללא שורות`);
+      NoRows.fire();
       return;
     }
 
@@ -26,7 +32,7 @@ const CreateOrder = () => {
         .map((item) => item.item_number)
         .join(",");
 
-      alert(`שורות ${badItemNumbers} מכילות חומרים לא קיימים`);
+      BadMaterial(badItemNumbers).fire();
       return;
     }
 
@@ -36,13 +42,13 @@ const CreateOrder = () => {
         .map((item) => item.item_number)
         .join(",");
 
-      alert(`אין כמות מספיקה במלאי עבור שורות ${badItemNumbers}`);
+      NotEnoughInStock(badItemNumbers).fire();
       return;
     }
 
     createOrder(orderItems);
     setOrderItems([]);
-    alert(`ההזמנה נוצרה בהצלחה`);
+    OrderCreated.fire();
   };
 
   return (

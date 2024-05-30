@@ -10,7 +10,7 @@ function OrderOverview() {
     <Card>
       <h1 className="text-gray-300 text-4xl text-center font-semibold p-4">
         {"צפייה בהזמנה מספר"}
-        <span className="text-blue-600 text-center">
+        <span className="text-blue-700 text-center">
           {" "}
           {orderData?.order_number}
         </span>

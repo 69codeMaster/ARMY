@@ -3,6 +3,7 @@ import TruckCheckIcon from "./UI/Icons/TruckCheckIcon";
 import TruckCancelIcon from "./UI/Icons/TruckCancelIcon";
 import { translateToHebrew } from "../utils/translateStatus";
 import { SameStatus } from "./Alerts/alerts";
+import { cancelOrder, issueOrder } from "./Alerts/alerts";
 
 const OrderStatusButtons = ({ setOrderStatus, orderData }) => {
   const handleClick = (status) => {
@@ -14,6 +15,8 @@ const OrderStatusButtons = ({ setOrderStatus, orderData }) => {
       return;
     }
     setOrderStatus(status);
+    if (status === ORDER_STATUS.Canceled) cancelOrder.fire();
+    else issueOrder.fire();
   };
   return (
     <div className="py-6 overflow-hidden flex justify-between">

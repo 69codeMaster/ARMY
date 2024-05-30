@@ -9,7 +9,8 @@ function OrderReport() {
   return (
     <Card>
       <h1 className="text-gray-300 text-5xl text-center font-semibold p-4">
-        {"דוח הזמנות"}
+        {"דוח "}
+        <span className="text-blue-700 text-center"> {"הזמנות"}</span>
       </h1>
       <OrderReportSelection setOrders={setOrders} />
       <OrderReportResult
