@@ -5,6 +5,7 @@ const Entry = ({ name, onChange, placeholder, title, value }) => {
     <div className="text-right">
       <h1 className="label label-text text-sm"> {title} </h1>
       <input
+        autocomplete="off"
         name={name}
         onChange={({ target }) => onChange(name, target.value)}
         value={value}
